@@ -23,6 +23,18 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/xs"
             android:text="@string/frequency"/>
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/xs"
+            android:text="Count"/>
+        <TextView
+            android:id="@+id/tvStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/xs"
+            android:text="Start Date"/>
     </LinearLayout>
 
     <CheckBox

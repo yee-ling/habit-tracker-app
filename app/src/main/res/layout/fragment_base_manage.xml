@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="@dimen/xs"
@@ -48,6 +47,10 @@
     </RadioGroup>
 
 <!--  Number Picker  -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repeats:"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,19 +77,24 @@
             android:src="@drawable/ic_plus"/>
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m"
+        android:text="Start Date:"/>
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"/>
-    <com.google.android.material.chip.Chip
-        android:id="@+id/pickDate"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="date"/>
-
+        android:layout_marginTop="@dimen/m"
+        android:text="End Date:"/>
     <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/materialSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

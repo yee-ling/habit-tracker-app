@@ -1,7 +1,13 @@
 package com.example.habittrackerapp.ui.myHabit
 
-import androidx.lifecycle.ViewModel
+import com.example.habittrackerapp.data.model.Frequency
 
-class WeeklyViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+class WeeklyViewModel : BaseFrequencyViewModel() {
+    init {
+        getHabits()
+    }
+    override fun getHabits() {
+        _habits.value = repo.getAllHabits().filter { it.frequency == Frequency.WEEKLY }
+    }
 }

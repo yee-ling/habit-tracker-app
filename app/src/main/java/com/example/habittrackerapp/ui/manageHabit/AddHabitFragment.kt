@@ -1,10 +1,8 @@
 package com.example.habittrackerapp.ui.manageHabit
 
-import android.app.DatePickerDialog
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.view.View
-import android.widget.DatePicker
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,14 +15,44 @@ class AddHabitFragment : BaseManageFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         lifecycleScope.launch {
             viewModel.finish.collect {
                 setFragmentResult("manage_habit", Bundle())
                 findNavController().popBackStack()
             }
         }
-
+        habitRepeatCounter()
+        binding.run {
+            mbSubmit.setOnClickListener {
+                val name = etName.text.toString()
+                val frequency = when(rgFrequency.checkedRadioButtonId) {
+                    rbDaily.id -> Frequency.DAILY
+                    rbWeekly.id -> Frequency.WEEKLY
+                    rbMonthly.id -> Frequency.MONTHLY
+                    rbYearly.id -> Frequency.YEARLY
+                    else -> Frequency.DAILY
+                }
+                val count = tvCount.text.toString().toInt()
+                val selectedDate = Calendar.getInstance().apply {
+                    set(Calendar.YEAR, datePicker.year)
+                    set(Calendar.MONTH, datePicker.month)
+                    set(Calendar.DAY_OF_MONTH, datePicker.dayOfMonth)
+                    set(Calendar.HOUR_OF_DAY, 0)
+                    set(Calendar.MINUTE, 0)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }
+                val startDate = selectedDate.timeInMillis
+                viewModel.addHabit(
+                    name = name,
+                    frequency = frequency,
+                    count = count,
+                    startDate = startDate
+                )
+            }
+        }
+    }
+    fun habitRepeatCounter() {
         binding.ivMinus.setOnClickListener {
             viewModel.decrement()
         }
@@ -36,33 +64,5 @@ class AddHabitFragment : BaseManageFragment() {
                 binding.tvCount.text = it.toString()
             }
         }
-        //date picker
-//        val datePicker: DatePicker = binding.datePicker
-//        val today = Calendar.getInstance()
-//        datePicker.init(
-//            today.get(Calendar.YEAR),
-//            today.get(Calendar.MONTH),
-//            today.get(Calendar.DAY_OF_MONTH)
-//        ) {view, year, month, day ->
-//        }
-
-        binding.run {
-            mbSubmit.setOnClickListener {
-                val name = etName.text.toString()
-
-                val frequency = when(rgFrequency.checkedRadioButtonId) {
-                    rbDaily.id -> Frequency.DAILY
-                    rbWeekly.id -> Frequency.WEEKLY
-                    rbMonthly.id -> Frequency.MONTHLY
-                    rbYearly.id -> Frequency.YEARLY
-                    else -> Frequency.DAILY
-                }
-                viewModel.addHabit(
-                    name = name,
-                    frequency = frequency
-                )
-            }
-        }
     }
-
 }

@@ -11,7 +11,6 @@ data class Habit(
     val createdAt: Long,
     val updatedAt: Long
 )
-
 enum class Frequency {
     DAILY, WEEKLY, MONTHLY, YEARLY
 }

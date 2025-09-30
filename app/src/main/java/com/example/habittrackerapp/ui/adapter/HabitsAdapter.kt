@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittrackerapp.data.model.Habit
 import com.example.habittrackerapp.databinding.ItemLayoutHabitBinding
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class HabitsAdapter(
     private var habits: List<Habit>
@@ -35,6 +38,10 @@ class HabitsAdapter(
             binding.run {
                 tvName.text = habit.name
                 tvFrequency.text = habit.frequency.toString()
+                tvCount.text = habit.repeatsPerDay.toString()
+                val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+                val formattedDate = formatter.format(Date(habit.startDate))
+                tvStartDate.text = formattedDate
             }
         }
     }

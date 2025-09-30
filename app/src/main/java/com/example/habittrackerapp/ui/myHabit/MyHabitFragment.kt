@@ -25,7 +25,9 @@ class MyHabitFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setupFrequencyTab()
+    }
+    fun setupFrequencyTab() {
         val tabLayout = binding.tabLayout
         val viewPager2 = binding.viewPager2
         val tabTitles = listOf("${Frequency.DAILY}", "${Frequency.WEEKLY}", "${Frequency.MONTHLY}", "${Frequency.YEARLY}" )

@@ -9,10 +9,12 @@ import kotlinx.coroutines.launch
 class AddHabitViewModel() : BaseManageViewModel() {
     private val _count = MutableStateFlow(1)
     val count = _count.asStateFlow()
-    fun addHabit(name: String, frequency: Frequency) {
+    fun addHabit(name: String, frequency: Frequency, count: Int, startDate: Long) {
         val habit = Habit(
             name = name,
             frequency = frequency,
+            repeatsPerDay = count,
+            startDate = startDate,
             createdAt = System.currentTimeMillis(),
             updatedAt = System.currentTimeMillis()
         )
