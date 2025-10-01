@@ -10,7 +10,8 @@ import java.util.Date
 import java.util.Locale
 
 class HabitsAdapter(
-    private var habits: List<Habit>
+    private var habits: List<Habit>,
+    private var onClick: (Habit) -> Unit
 ) : RecyclerView.Adapter<HabitsAdapter.HabitViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -42,6 +43,9 @@ class HabitsAdapter(
                 val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
                 val formattedDate = formatter.format(Date(habit.startDate))
                 tvStartDate.text = formattedDate
+                llHabit.setOnClickListener {
+                    onClick(habit)
+                }
             }
         }
     }
