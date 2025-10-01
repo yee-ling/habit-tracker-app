@@ -4,7 +4,6 @@ import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
-import com.example.habittrackerapp.data.model.Frequency
 import kotlinx.coroutines.launch
 
 class WeeklyFragment : BaseFrequencyFragment() {
@@ -12,7 +11,6 @@ class WeeklyFragment : BaseFrequencyFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvDaily.text = "${Frequency.WEEKLY}"
         setupAdapter()
         viewModel.getHabits()
         lifecycleScope.launch {

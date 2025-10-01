@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.example.habittrackerapp.data.model.Frequency
 import com.example.habittrackerapp.databinding.FragmentMyHabitBinding
 import com.example.habittrackerapp.ui.adapter.MyHabitAdapter
@@ -13,7 +13,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MyHabitFragment : Fragment() {
     private lateinit var binding: FragmentMyHabitBinding
-    private val viewModel: MyHabitViewModel by viewModels()
+    private lateinit var myHabitAdapter: MyHabitAdapter
+    private lateinit var viewPager2: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,11 +29,11 @@ class MyHabitFragment : Fragment() {
         setupFrequencyTab()
     }
     fun setupFrequencyTab() {
+        myHabitAdapter = MyHabitAdapter(this)
+        viewPager2 = binding.viewPager2
+        viewPager2.adapter = myHabitAdapter
         val tabLayout = binding.tabLayout
-        val viewPager2 = binding.viewPager2
         val tabTitles = listOf("${Frequency.DAILY}", "${Frequency.WEEKLY}", "${Frequency.MONTHLY}", "${Frequency.YEARLY}" )
-        val adapter = MyHabitAdapter(this)
-        viewPager2.adapter = adapter
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
