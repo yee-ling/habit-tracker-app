@@ -12,6 +12,7 @@
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="text"
         android:hint="@string/name"/>
 
     <RadioGroup
@@ -62,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/xs"
+            android:contentDescription="@string/decrease"
             android:src="@drawable/ic_minus"/>
         <TextView
             android:id="@+id/tvCount"
@@ -74,6 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/xs"
+            android:contentDescription="@string/increase"
             android:src="@drawable/ic_plus"/>
     </LinearLayout>
 

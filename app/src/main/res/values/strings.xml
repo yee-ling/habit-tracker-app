@@ -17,4 +17,6 @@
     <string name="weekly">WEEKLY</string>
     <string name="monthly">MONTHLY</string>
     <string name="yearly">YEARLY</string>
+    <string name="decrease">decrease</string>
+    <string name="increase">increase</string>
 </resources>
