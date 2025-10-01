@@ -12,45 +12,45 @@
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Habit Name"/>
+        android:hint="@string/name"/>
 
     <RadioGroup
         android:id="@+id/rgFrequency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checkedButton="@id/rbDaily"
         android:orientation="horizontal">
         <RadioButton
             android:id="@+id/rbDaily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:checked="true"
-            android:text="DAILY"/>
+            android:text="@string/daily"/>
         <RadioButton
             android:id="@+id/rbWeekly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="WEEKLY"/>
+            android:text="@string/weekly"/>
         <RadioButton
             android:id="@+id/rbMonthly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MONTHLY"/>
+            android:text="@string/monthly"/>
         <RadioButton
             android:id="@+id/rbYearly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="YEARLY"/>
+            android:text="@string/yearly"/>
     </RadioGroup>
 
 <!--  Number Picker  -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Repeats:"/>
+        android:text="@string/repeats"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/s"
-            android:text="1"/>
+            android:text="@string/_1"/>
         <ImageView
             android:id="@+id/ivPlus"
             android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/m"
-        android:text="Start Date:"/>
+        android:text="@string/start_date"/>
     <DatePicker
         android:id="@+id/datePicker"
         android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/m"
-        android:text="End Date:"/>
+        android:text="@string/end_date"/>
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/materialSwitch"
         android:layout_width="wrap_content"
@@ -102,6 +102,6 @@
         android:id="@+id/mbSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"/>
+        android:text="@string/add"/>
 
 </LinearLayout>

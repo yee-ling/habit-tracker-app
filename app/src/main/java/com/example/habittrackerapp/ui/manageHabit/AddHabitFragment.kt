@@ -52,17 +52,4 @@ class AddHabitFragment : BaseManageFragment() {
             }
         }
     }
-    fun habitRepeatCounter() {
-        binding.ivMinus.setOnClickListener {
-            viewModel.decrement()
-        }
-        binding.ivPlus.setOnClickListener {
-            viewModel.increment()
-        }
-        lifecycleScope.launch {
-            viewModel.count.collect {
-                binding.tvCount.text = it.toString()
-            }
-        }
-    }
 }

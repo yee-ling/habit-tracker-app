@@ -11,8 +11,10 @@ class HabitDetailsViewModel(
 ) : ViewModel() {
     private val _habit = MutableStateFlow<Habit?>(null)
     val habit = _habit.asStateFlow()
-
     fun getHabitById(id: Int) {
         _habit.value = repo.getHabitById(id)
+    }
+    fun deleteHabit(id: Int) {
+        repo.deleteHabit(id)
     }
 }

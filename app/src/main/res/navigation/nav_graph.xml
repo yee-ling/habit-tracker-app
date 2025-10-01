@@ -32,5 +32,15 @@
         android:label="fragment_habit_details"
         tools:layout="@layout/fragment_habit_details">
         <argument android:name="habit_id" app:argType="integer"/>
+        <action
+            android:id="@+id/action_habitDetails_to_editHabit"
+            app:destination="@id/editHabitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editHabitFragment"
+        android:name="com.example.habittrackerapp.ui.manageHabit.EditHabitFragment"
+        android:label="EditHabitFragment"
+        tools:layout="@layout/fragment_base_manage">
+        <argument android:name="habit_id" app:argType="integer"/>
     </fragment>
 </navigation>

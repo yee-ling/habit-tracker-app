@@ -7,7 +7,6 @@
     android:gravity="center"
     android:padding="@dimen/xs"
     tools:context=".ui.manageHabit.HabitDetailsFragment">
-
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
@@ -25,18 +24,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
-        android:text="Repeats"/>
+        android:text="@string/repeats"/>
     <TextView
         android:id="@+id/tvStartDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
-        android:text="Start Date"/>
+        android:text="@string/start_date"/>
     <TextView
         android:id="@+id/tvEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
-        android:text="End Date"/>
-
+        android:text="@string/end_date"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m"
+        android:text="@string/edit"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"/>
 </LinearLayout>

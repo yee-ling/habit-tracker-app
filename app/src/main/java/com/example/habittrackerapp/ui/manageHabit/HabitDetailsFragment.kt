@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.habittrackerapp.databinding.FragmentHabitDetailsBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
 class HabitDetailsFragment : Fragment() {
@@ -36,6 +38,23 @@ class HabitDetailsFragment : Fragment() {
 //                    tvStartDate.text = it?.startDate.toString()
                 }
             }
+        }
+        binding.mbEdit.setOnClickListener {
+            val action = HabitDetailsFragmentDirections.actionHabitDetailsToEditHabit(args.habitId)
+            findNavController().navigate(action)
+        }
+        binding.mbDelete.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Delete this habit?")
+                .setMessage("This habit will be permanently removed, all progress made will also be deleted.")
+                .setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Delete") { dialog, _ ->
+                    viewModel.deleteHabit(args.habitId)
+                    dialog.dismiss()
+                    findNavController().popBackStack()
+                }.show()
         }
     }
 }
