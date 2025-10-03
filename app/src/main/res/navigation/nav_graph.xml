@@ -20,7 +20,11 @@
         android:id="@+id/addHabitFragment"
         android:name="com.example.habittrackerapp.ui.manageHabit.AddHabitFragment"
         android:label="AddHabitFragment"
-        tools:layout="@layout/fragment_base_manage"/>
+        tools:layout="@layout/fragment_base_manage">
+        <action
+            android:id="@+id/action_addHabit_to_datePickerDialog"
+            app:destination="@id/datePickerDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myHabitFragment"
         android:name="com.example.habittrackerapp.ui.myHabit.MyHabitFragment"
@@ -43,4 +47,11 @@
         tools:layout="@layout/fragment_base_manage">
         <argument android:name="habit_id" app:argType="integer"/>
     </fragment>
+    <dialog
+        android:id="@+id/datePickerDialogFragment"
+        android:name="com.example.habittrackerapp.ui.dialog.DatePickerDialogFragment"
+        android:label="fragment_date_picker_dialog"
+        tools:layout="@layout/fragment_date_picker_dialog">
+        <argument android:name="start_date" app:argType="long"/>
+    </dialog>
 </navigation>
