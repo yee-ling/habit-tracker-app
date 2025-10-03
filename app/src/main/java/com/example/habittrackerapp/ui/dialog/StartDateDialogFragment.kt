@@ -2,28 +2,14 @@ package com.example.habittrackerapp.ui.dialog
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.habittrackerapp.R
-import com.example.habittrackerapp.databinding.FragmentDatePickerDialogBinding
 import java.util.Calendar
 
-class DatePickerDialogFragment : DialogFragment() {
-    private lateinit var binding: FragmentDatePickerDialogBinding
-    private val viewModel: DatePickerDialogViewModel by viewModels()
-    private val args: DatePickerDialogFragmentArgs by navArgs()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentDatePickerDialogBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class StartDateDialogFragment : BaseDialogFragment() {
+    override val viewModel: StartDateDialogViewModel by viewModels()
+    private val args: StartDateDialogFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

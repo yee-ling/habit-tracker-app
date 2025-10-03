@@ -1,7 +1,5 @@
 package com.example.habittrackerapp.ui.dialog
 
-import androidx.lifecycle.ViewModel
-
-class DatePickerDialogViewModel : ViewModel() {
+class EndDateDialogViewModel() : BaseDialogViewModel() {
     // TODO: Implement the ViewModel
 }
