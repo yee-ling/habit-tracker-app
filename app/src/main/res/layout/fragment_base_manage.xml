@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="@dimen/xs"
@@ -48,63 +49,115 @@
     </RadioGroup>
 
 <!--  Number Picker  -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/repeats"/>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="@drawable/counter_bg">
-        <ImageView
-            android:id="@+id/ivMinus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/xs"
-            android:contentDescription="@string/decrease"
-            android:src="@drawable/ic_minus"/>
+        android:orientation="horizontal">
         <TextView
-            android:id="@+id/tvCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text="@string/repeats"/>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/s"
-            android:text="@string/_1"/>
-        <ImageView
-            android:id="@+id/ivPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/xs"
-            android:contentDescription="@string/increase"
-            android:src="@drawable/ic_plus"/>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/counter_bg">
+            <ImageView
+                android:id="@+id/ivMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/xs"
+                android:contentDescription="@string/decrease"
+                android:src="@drawable/ic_minus"/>
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/s"
+                android:text="@string/_1"/>
+            <ImageView
+                android:id="@+id/ivPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/xs"
+                android:contentDescription="@string/increase"
+                android:src="@drawable/ic_plus"/>
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/start_date"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mbStartDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/start_date"
+            app:cornerRadius="@dimen/s" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/end_date"/>
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/materialSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mbEndDatePicker"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/m"
-        android:text="@string/start_date"/>
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/m"
-        android:text="@string/end_date"/>
-    <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/materialSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:text="@string/end_date"
+        app:cornerRadius="@dimen/s" />
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/m"-->
+<!--        android:text="@string/start_date"/>-->
+<!--    <DatePicker-->
+<!--        android:id="@+id/datePicker"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minDate="01/06/2023"-->
+<!--        android:maxDate="06/28/2028"-->
+<!--        android:calendarViewShown="false"-->
+<!--        android:datePickerMode="spinner"/>-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/m"-->
+<!--        android:text="@string/end_date"/>-->
+<!--    <com.google.android.material.materialswitch.MaterialSwitch-->
+<!--        android:id="@+id/materialSwitch"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xxxxxxxxl"
         android:text="@string/add"/>
-
 </LinearLayout>

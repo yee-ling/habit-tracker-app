@@ -7,6 +7,7 @@
     app:cardCornerRadius="@dimen/l"
     android:id="@+id/cvCalendar">
     <LinearLayout
+        android:id="@+id/llCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

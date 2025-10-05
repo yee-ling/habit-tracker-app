@@ -36,5 +36,7 @@ class EndDateDialogFragment : BaseDialogFragment() {
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH)
         )
+        // TODO set the minDate for the endDate
+        binding.datePicker.minDate = Calendar.getInstance().timeInMillis
     }
 }

@@ -34,10 +34,13 @@ class HomeFragment : Fragment() {
         navigateToAddHabit()
         setupAdapter()
         setupCalendarAdapter()
-//        setFragmentResultListener("manage_habit") { _, _ ->
-//            viewModel.getHabits()
-//        }
-        viewModel.getHabits()
+        val today = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }.timeInMillis
+        viewModel.getHabits(today)
         lifecycleScope.launch {
             viewModel.habits.collect {
                 adapter.setHabits(it)
@@ -72,7 +75,9 @@ class HomeFragment : Fragment() {
             }.timeInMillis
         }
 //        TODO onclick
-        calendarAdapter = CalendarAdapter(days) {}
+        calendarAdapter = CalendarAdapter(days) { date ->
+            viewModel.getHabits(selectedDate = date)
+        }
         binding.rvCalendarView.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.HORIZONTAL, false)
         binding.rvCalendarView.adapter = calendarAdapter

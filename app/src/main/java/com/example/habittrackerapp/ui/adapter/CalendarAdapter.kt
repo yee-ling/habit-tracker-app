@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittrackerapp.R
 import com.example.habittrackerapp.databinding.ItemLayoutCalendarBinding
-import java.sql.RowIdLifetime
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -16,6 +15,8 @@ class CalendarAdapter(
     private var dates: List<Long>,
     private val onClick: (Long) -> Unit
 ): RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
+    private var selectedDate: Long? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -50,10 +51,28 @@ class CalendarAdapter(
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
             }.timeInMillis
-            if(date == today) {
-                binding.cvCalendar.setCardBackgroundColor(
-                    ContextCompat.getColor(binding.root.context, R.color.green)
-                )
+
+            when (date) {
+                today -> {
+                    binding.cvCalendar.setCardBackgroundColor(
+                        ContextCompat.getColor(binding.root.context, R.color.green)
+                    )
+                }
+                selectedDate -> {
+                    binding.cvCalendar.setCardBackgroundColor(
+                        ContextCompat.getColor(binding.root.context, R.color.grey)
+                    )
+                }
+                else -> {
+                    binding.cvCalendar.setCardBackgroundColor(
+                        ContextCompat.getColor(binding.root.context, R.color.white)
+                    )
+                }
+            }
+            binding.llCalendar.setOnClickListener {
+                selectedDate = date
+                onClick(date)
+                notifyDataSetChanged()
             }
         }
     }
