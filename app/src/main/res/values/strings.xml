@@ -19,4 +19,5 @@
     <string name="yearly">YEARLY</string>
     <string name="decrease">decrease</string>
     <string name="increase">increase</string>
+    <string name="today">Today</string>
 </resources>

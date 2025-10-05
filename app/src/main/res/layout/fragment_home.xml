@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
         android:textSize="@dimen/tx_l"
-        android:text="Today"/>
+        android:text="@string/today"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCalendarView"

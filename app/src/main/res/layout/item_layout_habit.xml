@@ -32,14 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/xs"
-            android:text="Count" />
+            android:text="@string/repeats" />
 
         <TextView
             android:id="@+id/tvStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/xs"
-            android:text="Start Date" />
+            android:text="@string/start_date" />
     </LinearLayout>
 
     <CheckBox
