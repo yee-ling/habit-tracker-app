@@ -2,4 +2,22 @@
     <string name="app_name">HabitTrackerApp</string>
     <string name="name">Name</string>
     <string name="frequency">Frequency</string>
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="_1">1</string>
+    <string name="repeats">Repeats</string>
+    <string name="edit">Edit</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="add">Add</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="daily">DAILY</string>
+    <string name="weekly">WEEKLY</string>
+    <string name="monthly">MONTHLY</string>
+    <string name="yearly">YEARLY</string>
+    <string name="decrease">decrease</string>
+    <string name="increase">increase</string>
+    <string name="today">Today</string>
 </resources>

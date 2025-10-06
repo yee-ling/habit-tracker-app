@@ -4,17 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.myHabit.DailyFragment">
-
-    <TextView
-        android:id="@+id/tvDaily"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Daily" />
+    tools:context=".ui.myHabit.BaseFrequencyFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMyHabit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

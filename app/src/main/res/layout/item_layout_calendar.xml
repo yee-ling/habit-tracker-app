@@ -4,22 +4,29 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/xs"
-    app:cardCornerRadius="@dimen/xl">
+    app:cardCornerRadius="@dimen/l"
+    android:id="@+id/cvCalendar">
     <LinearLayout
+        android:id="@+id/llCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="@dimen/xl">
+        android:padding="@dimen/s">
         <TextView
             android:id="@+id/tvDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Day"/>
+            android:text="@string/day"/>
         <TextView
-            android:id="@+id/tvDate"
+            android:id="@+id/tvMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date"/>
+            android:text="@string/month"/>
+        <TextView
+            android:id="@+id/tvYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/year"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

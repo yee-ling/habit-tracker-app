@@ -2,28 +2,21 @@ package com.example.habittrackerapp.ui.myHabit
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.example.habittrackerapp.R
-import com.example.habittrackerapp.data.model.Frequency
-import com.example.habittrackerapp.databinding.FragmentDailyBinding
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
-class WeeklyFragment : Fragment() {
-    private lateinit var binding: FragmentDailyBinding
-    private val viewModel: WeeklyViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentDailyBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+class WeeklyFragment : BaseFrequencyFragment() {
+    override val viewModel: WeeklyViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvDaily.text = "${Frequency.WEEKLY}"
+        setupAdapter()
+        viewModel.getHabits()
+        lifecycleScope.launch {
+            viewModel.habits.collect {
+                adapter.setHabits(it)
+            }
+        }
     }
 }
