@@ -13,9 +13,7 @@ import com.example.habittrackerapp.databinding.FragmentHabitDetailsBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 class HabitDetailsFragment : Fragment() {
     private lateinit var binding: FragmentHabitDetailsBinding
@@ -42,14 +40,8 @@ class HabitDetailsFragment : Fragment() {
                     tvCurrentProgress.text = it?.currentProgress.toString()
                     val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
                         .format(Date(it?.startDate?:System.currentTimeMillis()))
-//                    val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-//                    val formattedDate = formatter.format(Date(it?.startDate?:System.currentTimeMillis()))
                     tvStartDate.text = dateFormat
-
-//                    val endDateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
-//                        .format(Date(it?.endDate?:System.currentTimeMillis()))
                     val endDateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
-
                     tvEndDate.text = if (it?.endDate != null) {
                         endDateFormat.format(Date(it.endDate))
                     } else {

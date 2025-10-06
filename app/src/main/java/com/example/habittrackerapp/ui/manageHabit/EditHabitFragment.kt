@@ -85,7 +85,6 @@ class EditHabitFragment() : BaseManageFragment() {
             val action = EditHabitFragmentDirections.actionEditHabitToEndDateDialog(endDate!!)
             findNavController().navigate(action)
         }
-
         lifecycleScope.launch {
             viewModel.finish.collect {
                 findNavController().popBackStack()
