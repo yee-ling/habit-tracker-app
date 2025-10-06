@@ -27,13 +27,14 @@ class EditHabitViewModel() : BaseManageViewModel() {
             _count.value = habit?.repeatsPerDay ?:1
         }
     }
-    fun updateHabit(id: Int, name: String, frequency: Frequency, count: Int, startDate: Long) {
+    fun updateHabit(id: Int, name: String, frequency: Frequency, count: Int, startDate: Long, endDate: Long?) {
         val habit = repo.getHabitById(id)
         val updatedHabit = Habit(
             name = name,
             frequency = frequency,
             repeatsPerDay = count,
             startDate = startDate,
+            endDate = endDate,
             createdAt = habit?.createdAt?:System.currentTimeMillis(),
             updatedAt = System.currentTimeMillis()
         )

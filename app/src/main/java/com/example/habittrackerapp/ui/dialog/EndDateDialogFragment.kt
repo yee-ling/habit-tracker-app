@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.habittrackerapp.R
 import java.util.Calendar
 
 class EndDateDialogFragment : BaseDialogFragment() {
@@ -17,6 +18,7 @@ class EndDateDialogFragment : BaseDialogFragment() {
             dismiss()
         }
         binding.run {
+            tvPlaceholder.text = getString(R.string.end_date)
             mbApply.setOnClickListener {
                 val selectedDate = Calendar.getInstance().apply {
                     set(Calendar.YEAR, datePicker.year)

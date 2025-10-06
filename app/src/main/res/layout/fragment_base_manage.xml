@@ -131,29 +131,6 @@
         android:text="@string/end_date"
         app:cornerRadius="@dimen/s" />
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/m"-->
-<!--        android:text="@string/start_date"/>-->
-<!--    <DatePicker-->
-<!--        android:id="@+id/datePicker"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:minDate="01/06/2023"-->
-<!--        android:maxDate="06/28/2028"-->
-<!--        android:calendarViewShown="false"-->
-<!--        android:datePickerMode="spinner"/>-->
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/m"-->
-<!--        android:text="@string/end_date"/>-->
-<!--    <com.google.android.material.materialswitch.MaterialSwitch-->
-<!--        android:id="@+id/materialSwitch"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"/>-->
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbSubmit"
         android:layout_width="match_parent"

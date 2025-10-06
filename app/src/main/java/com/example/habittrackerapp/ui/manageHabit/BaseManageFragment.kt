@@ -32,4 +32,5 @@ abstract class BaseManageFragment : Fragment() {
             }
         }
     }
+    abstract fun submit()
 }

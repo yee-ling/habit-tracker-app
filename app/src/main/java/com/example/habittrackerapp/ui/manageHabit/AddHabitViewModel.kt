@@ -20,5 +20,5 @@ class AddHabitViewModel() : BaseManageViewModel() {
             _finish.emit(Unit)
         }
     }
-    //TODO set if endDate is not null, cannot be earlier than startDate
+    //TODO: if endDate is not null, cannot be earlier than startDate
 }
