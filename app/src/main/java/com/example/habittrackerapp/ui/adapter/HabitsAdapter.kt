@@ -61,9 +61,9 @@ class HabitsAdapter(
                 circularCheckbox.progress = currentProgress
 
                 circularCheckbox.setOnClickListener {
-                    val newProgress = circularCheckbox.progress + 1
-                    currentProgress = newProgress
-                    circularCheckbox.progress = newProgress
+                    val updateProgress = circularCheckbox.progress + 1
+                    currentProgress = updateProgress
+                    circularCheckbox.progress = updateProgress
                 }
             }
         }

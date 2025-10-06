@@ -37,6 +37,12 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
         android:text="@string/end_date"/>
+    <TextView
+        android:id="@+id/tvCurrentProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/xs"
+        android:text="@string/current_progress"/>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbEdit"
         android:layout_width="wrap_content"

@@ -23,6 +23,11 @@ class HabitsRepo private constructor() {
             map[id] = habit.copy(isCompleted = true)
         }
     }
+    fun updateProgress(id: Int, count: Int) {
+        map[id]?.let { habit ->
+            map[id] = habit.copy(currentProgress = count)
+        }
+    }
     companion object {
         private var instance: HabitsRepo? = null
         fun getInstance(): HabitsRepo {

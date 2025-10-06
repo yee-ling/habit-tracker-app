@@ -26,26 +26,8 @@ class AddHabitFragment : BaseManageFragment() {
         habitRepeatCounter()
         observeStartDateResult()
         observeEndDateResult()
-        binding.run {
-            mbSubmit.setOnClickListener {
-                val name = etName.text.toString()
-                val frequency = when(rgFrequency.checkedRadioButtonId) {
-                    rbDaily.id -> Frequency.DAILY
-                    rbWeekly.id -> Frequency.WEEKLY
-                    rbMonthly.id -> Frequency.MONTHLY
-                    rbYearly.id -> Frequency.YEARLY
-                    else -> Frequency.DAILY
-                }
-                val count = tvCount.text.toString().toInt()
-                viewModel.addHabit(
-                    name = name,
-                    frequency = frequency,
-                    count = count,
-                    startDate = startDate,
-                    endDate = endDate
-                )
-            }
-        }
+        submit()
+
 //        UPDATE THE START DATE BUTTON TO THE SELECTED DATE
         val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
             .format(Date(startDate))
@@ -91,6 +73,29 @@ class AddHabitFragment : BaseManageFragment() {
             val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
                 .format(Date(result))
             binding.mbEndDatePicker.text = dateFormat.toString()
+        }
+    }
+
+    override fun submit() {
+        binding.run {
+            mbSubmit.setOnClickListener {
+                val name = etName.text.toString()
+                val frequency = when(rgFrequency.checkedRadioButtonId) {
+                    rbDaily.id -> Frequency.DAILY
+                    rbWeekly.id -> Frequency.WEEKLY
+                    rbMonthly.id -> Frequency.MONTHLY
+                    rbYearly.id -> Frequency.YEARLY
+                    else -> Frequency.DAILY
+                }
+                val count = tvCount.text.toString().toInt()
+                viewModel.addHabit(
+                    name = name,
+                    frequency = frequency,
+                    count = count,
+                    startDate = startDate,
+                    endDate = endDate
+                )
+            }
         }
     }
 }

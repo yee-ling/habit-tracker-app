@@ -20,4 +20,5 @@
     <string name="decrease">decrease</string>
     <string name="increase">increase</string>
     <string name="today">Today</string>
+    <string name="current_progress">Current Progress</string>
 </resources>

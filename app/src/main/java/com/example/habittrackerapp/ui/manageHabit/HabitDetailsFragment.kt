@@ -39,6 +39,7 @@ class HabitDetailsFragment : Fragment() {
                     tvName.text = it?.name.toString()
                     tvFrequency.text = it?.frequency.toString()
                     tvRepeats.text = it?.repeatsPerDay.toString()
+                    tvCurrentProgress.text = it?.currentProgress.toString()
                     val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
                         .format(Date(it?.startDate?:System.currentTimeMillis()))
 //                    val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
@@ -52,7 +53,7 @@ class HabitDetailsFragment : Fragment() {
                     tvEndDate.text = if (it?.endDate != null) {
                         endDateFormat.format(Date(it.endDate))
                     } else {
-                        "null"   // or "No end date" if you prefer user-friendly text
+                        "null"
                     }
                 }
             }

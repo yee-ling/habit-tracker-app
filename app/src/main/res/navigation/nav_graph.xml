@@ -49,6 +49,12 @@
         android:label="EditHabitFragment"
         tools:layout="@layout/fragment_base_manage">
         <argument android:name="habit_id" app:argType="integer"/>
+        <action
+            android:id="@+id/action_editHabit_to_startDateDialog"
+            app:destination="@id/startDateDialogFragment" />
+        <action
+            android:id="@+id/action_editHabit_to_endDateDialog"
+            app:destination="@id/endDateDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/startDateDialogFragment"
