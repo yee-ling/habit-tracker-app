@@ -37,7 +37,7 @@ class HabitDetailsFragment : Fragment() {
                     tvName.text = it?.name.toString()
                     tvFrequency.text = it?.frequency.toString()
                     tvRepeats.text = it?.repeatsPerDay.toString()
-                    tvCurrentProgress.text = it?.currentProgress.toString()
+//                    tvCurrentProgress.text = it?.currentProgress.toString()
                     val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
                         .format(Date(it?.startDate?:System.currentTimeMillis()))
                     tvStartDate.text = dateFormat

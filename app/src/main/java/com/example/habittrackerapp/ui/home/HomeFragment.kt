@@ -20,6 +20,12 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: HabitsAdapter
     private lateinit var calendarAdapter: CalendarAdapter
     private val viewModel: HomeViewModel by viewModels()
+    private var selectedDate: Long = Calendar.getInstance().apply {
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }.timeInMillis
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,16 +40,11 @@ class HomeFragment : Fragment() {
         navigateToAddHabit()
         setupAdapter()
         setupCalendarAdapter()
-        val today = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-        }.timeInMillis
-        viewModel.getHabits(today)
+        viewModel.getHabits(selectedDate)
         lifecycleScope.launch {
             viewModel.habits.collect {
                 adapter.setHabits(it)
+                adapter.setSelectedDate(selectedDate)
             }
         }
     }
@@ -54,10 +55,20 @@ class HomeFragment : Fragment() {
         }
     }
     fun setupAdapter() {
-        adapter = HabitsAdapter(habits = emptyList()) {
-            val action = HomeFragmentDirections.actionHomeToHabitDetails(it.id!!)
-            findNavController().navigate(action)
-        }
+        adapter = HabitsAdapter(
+            habits = emptyList(),
+            onClick = {
+                val action = HomeFragmentDirections.actionHomeToHabitDetails(it.id!!)
+                findNavController().navigate(action)
+            },
+            onCheckboxClick = { it ->
+                val habitProgressForDate = it.progress.find { it.date == selectedDate }
+                val newCount = habitProgressForDate?.progress?.plus(1) ?: 1
+                if (newCount <= it.habit.repeatsPerDay)
+                    viewModel.updateProgress(it.habit.id!!, selectedDate, newCount)
+            },
+            selectedDate = selectedDate
+        )
         binding.rvHabits.layoutManager = LinearLayoutManager(requireContext())
         binding.rvHabits.adapter = adapter
     }
@@ -67,16 +78,18 @@ class HomeFragment : Fragment() {
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
-        }
+        }.timeInMillis
         val days = (-1000..1000).map { offset ->
             Calendar.getInstance().apply {
-                timeInMillis = today.timeInMillis
+                timeInMillis = today
                 add(Calendar.DAY_OF_YEAR, offset)
             }.timeInMillis
         }
-//        TODO onclick
         calendarAdapter = CalendarAdapter(days) { date ->
+            selectedDate = date
             viewModel.getHabits(selectedDate = date)
+            adapter.setHabits(viewModel.habits.value)
+            adapter.setSelectedDate(selectedDate)
         }
         binding.rvCalendarView.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.HORIZONTAL, false)

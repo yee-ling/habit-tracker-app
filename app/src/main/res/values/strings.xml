@@ -22,4 +22,6 @@
     <string name="today">Today</string>
     <string name="current_progress">Current Progress</string>
     <string name="completion_rate">Completion Rate</string>
+    <string name="progress">Progress</string>
+    <string name="slash">/</string>
 </resources>
