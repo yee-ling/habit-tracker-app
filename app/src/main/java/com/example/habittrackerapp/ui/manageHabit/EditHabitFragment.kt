@@ -73,13 +73,11 @@ class EditHabitFragment() : BaseManageFragment() {
                 }
             }
         }
-
         //navigate to startDate Dialog
         binding.mbStartDatePicker.setOnClickListener {
             val action = EditHabitFragmentDirections.actionEditHabitToStartDateDialog(startDate)
             findNavController().navigate(action)
         }
-
         //navigate to endDate Dialog
         binding.mbEndDatePicker.setOnClickListener {
             val action = EditHabitFragmentDirections.actionEditHabitToEndDateDialog(endDate!!)

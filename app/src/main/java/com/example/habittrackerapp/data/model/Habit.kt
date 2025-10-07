@@ -5,10 +5,8 @@ data class Habit(
     val name: String,
     val frequency: Frequency = Frequency.DAILY,
     val repeatsPerDay: Int = 1,
-    val currentProgress: Int = 0,
     val startDate: Long,
     val endDate: Long? = null,
-    val isCompleted: Boolean = false,
     val createdAt: Long,
     val updatedAt: Long
 )
