@@ -47,7 +47,38 @@
             android:layout_weight="1"
             android:text="@string/yearly"/>
     </RadioGroup>
-
+<!--  Category  -->
+    <RadioGroup
+        android:id="@+id/rgCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/rbPersonal"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/personal"/>
+        <RadioButton
+            android:id="@+id/rbStudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/study"/>
+        <RadioButton
+            android:id="@+id/rbWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/work"/>
+        <RadioButton
+            android:id="@+id/rbHealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/health"/>
+    </RadioGroup>
 <!--  Number Picker  -->
     <LinearLayout
         android:layout_width="match_parent"

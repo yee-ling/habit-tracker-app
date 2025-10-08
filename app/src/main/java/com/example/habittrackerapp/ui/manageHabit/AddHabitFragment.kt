@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.habittrackerapp.data.model.Category
 import com.example.habittrackerapp.data.model.Frequency
 import kotlinx.coroutines.launch
 import java.text.DateFormat
@@ -87,10 +88,18 @@ class AddHabitFragment : BaseManageFragment() {
                     rbYearly.id -> Frequency.YEARLY
                     else -> Frequency.DAILY
                 }
+                val category = when(rgCategory.checkedRadioButtonId) {
+                    rbPersonal.id -> Category.PERSONAL
+                    rbStudy.id -> Category.STUDY
+                    rbWork.id -> Category.WORK
+                    rbHealth.id -> Category.HEALTH
+                    else -> Category.PERSONAL
+                }
                 val count = tvCount.text.toString().toInt()
                 viewModel.addHabit(
                     name = name,
                     frequency = frequency,
+                    category = category,
                     count = count,
                     startDate = startDate,
                     endDate = endDate

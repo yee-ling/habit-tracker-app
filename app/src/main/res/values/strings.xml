@@ -24,4 +24,9 @@
     <string name="completion_rate">Completion Rate</string>
     <string name="progress">Progress</string>
     <string name="slash">/</string>
+    <string name="personal">PERSONAL</string>
+    <string name="study">STUDY</string>
+    <string name="work">WORK</string>
+    <string name="health">HEALTH</string>
+    <string name="category">Category</string>
 </resources>

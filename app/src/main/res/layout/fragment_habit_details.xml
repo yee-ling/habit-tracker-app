@@ -134,6 +134,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpCurrentProgress" />
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category"
+        android:padding="@dimen/xs"
+        app:layout_constraintBottom_toTopOf="@+id/mbEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentProgress" />
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbEdit"
         android:layout_width="wrap_content"
