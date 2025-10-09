@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
@@ -24,6 +25,61 @@
         android:layout_height="@dimen/xxxxs"
         android:layout_marginVertical="@dimen/xxxs"/>
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/xs"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        app:checkedChip="@+id/chipAll">
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/all"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipHealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/health"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipStudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/study"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/work"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/personal"/>
+    </com.google.android.material.chip.ChipGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHabits"
         android:layout_width="match_parent"
@@ -37,6 +93,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="@dimen/xl"
-        android:layout_marginEnd="@dimen/xl"/>
+        android:layout_marginEnd="@dimen/xl" />
 
 </LinearLayout>

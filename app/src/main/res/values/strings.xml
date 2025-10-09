@@ -24,9 +24,14 @@
     <string name="completion_rate">Completion Rate</string>
     <string name="progress">Progress</string>
     <string name="slash">/</string>
-    <string name="personal">PERSONAL</string>
-    <string name="study">STUDY</string>
-    <string name="work">WORK</string>
-    <string name="health">HEALTH</string>
+    <string name="personal_uppercase">PERSONAL</string>
+    <string name="study_uppercase">STUDY</string>
+    <string name="work_uppercase">WORK</string>
+    <string name="health_uppercase">HEALTH</string>
     <string name="category">Category</string>
+    <string name="all">All</string>
+    <string name="health">Health</string>
+    <string name="study">Study</string>
+    <string name="work">Work</string>
+    <string name="personal">Personal</string>
 </resources>

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.habittrackerapp.data.model.Category
 import com.example.habittrackerapp.databinding.FragmentHomeBinding
 import com.example.habittrackerapp.ui.adapter.CalendarAdapter
 import com.example.habittrackerapp.ui.adapter.HabitsAdapter
@@ -47,6 +48,25 @@ class HomeFragment : Fragment() {
                 adapter.setSelectedDate(selectedDate)
             }
         }
+        binding.cgCategory.setOnCheckedStateChangeListener { group, checkedIds ->
+            val checkedId = checkedIds.firstOrNull()
+            val categorySelected = when(checkedId) {
+                binding.chipAll.id -> "All"
+                binding.chipHealth.id -> Category.HEALTH
+                binding.chipStudy.id -> Category.STUDY
+                binding.chipWork.id -> Category.WORK
+                binding.chipPersonal.id -> Category.PERSONAL
+                else -> "All"
+            }
+            val filteredByCategory = if(categorySelected == "All") {
+                viewModel.habits.value
+            } else {
+                viewModel.habits.value.filter {
+                    it.habit.category == categorySelected
+                }
+            }
+            adapter.setHabits(filteredByCategory)
+        }
     }
     fun navigateToAddHabit() {
         binding.fabAdd.setOnClickListener {
@@ -58,7 +78,7 @@ class HomeFragment : Fragment() {
         adapter = HabitsAdapter(
             habits = emptyList(),
             onClick = {
-                val action = HomeFragmentDirections.actionHomeToHabitDetails(it.id!!)
+                val action = HomeFragmentDirections.actionHomeToHabitDetails(it.id!!, selectedDate)
                 findNavController().navigate(action)
             },
             onCheckboxClick = { it ->
@@ -90,11 +110,15 @@ class HomeFragment : Fragment() {
             viewModel.getHabits(selectedDate = date)
             adapter.setHabits(viewModel.habits.value)
             adapter.setSelectedDate(selectedDate)
+            binding.cgCategory.check(binding.chipAll.id)
         }
         binding.rvCalendarView.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.HORIZONTAL, false)
         binding.rvCalendarView.adapter = calendarAdapter
         val todayIndex = 1000
         binding.rvCalendarView.scrollToPosition(todayIndex)
+        binding.tvHomeDate.setOnClickListener {
+            binding.rvCalendarView.smoothScrollToPosition(todayIndex)
+        }
     }
 }
