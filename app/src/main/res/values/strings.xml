@@ -34,4 +34,9 @@
     <string name="study">Study</string>
     <string name="work">Work</string>
     <string name="personal">Personal</string>
+    <string name="current_streak">Current Streak</string>
+    <string name="streaks">Streaks</string>
+    <string name="your_best">Your Best</string>
+    <string name="home_empty_text_placeholder">You don\'t have any habits scheduled</string>
+    <string name="home_empty_text_placeholder_2">Click the + button to add new habit</string>
 </resources>

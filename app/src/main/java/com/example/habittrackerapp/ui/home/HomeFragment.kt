@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.addRecord()
         navigateToAddHabit()
         setupAdapter()
         setupCalendarAdapter()
@@ -46,6 +47,7 @@ class HomeFragment : Fragment() {
             viewModel.habits.collect {
                 adapter.setHabits(it)
                 adapter.setSelectedDate(selectedDate)
+                binding.llEmpty.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
             }
         }
         binding.cgCategory.setOnCheckedStateChangeListener { group, checkedIds ->

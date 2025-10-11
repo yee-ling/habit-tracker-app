@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
-
     <TextView
         android:id="@+id/tvHomeDate"
         android:layout_width="match_parent"
@@ -14,17 +13,14 @@
         android:padding="@dimen/xs"
         android:textSize="@dimen/tx_l"
         android:text="@string/today"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCalendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="@dimen/xxxxs"
         android:layout_marginVertical="@dimen/xxxs"/>
-
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgCategory"
         android:layout_width="match_parent"
@@ -79,20 +75,41 @@
             app:checkedIcon="@drawable/ic_check_small"
             android:text="@string/personal"/>
     </com.google.android.material.chip.ChipGroup>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHabits"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:src="@drawable/ic_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/xl"
-        android:layout_marginEnd="@dimen/xl" />
-
+        android:layout_weight="1">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHabits"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:id="@+id/llEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="@dimen/xxxxxxxxl"
+                android:layout_height="@dimen/xxxxxxxxl"
+                android:layout_marginBottom="@dimen/xs"
+                android:src="@drawable/ic_sentiment_dissatisfied"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_empty_text_placeholder"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_empty_text_placeholder_2"/>
+        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:src="@drawable/ic_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/xl"
+            android:layout_marginEnd="@dimen/xl" />
+    </FrameLayout>
 </LinearLayout>
