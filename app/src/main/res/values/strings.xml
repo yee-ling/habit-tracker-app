@@ -39,4 +39,6 @@
     <string name="your_best">Your Best</string>
     <string name="home_empty_text_placeholder">You don\'t have any habits scheduled</string>
     <string name="home_empty_text_placeholder_2">Click the + button to add new habit</string>
+    <string name="frequency_empty_text_placeholder_2">You can add one from the Home page</string>
+    <string name="search">Search</string>
 </resources>

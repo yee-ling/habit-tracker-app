@@ -12,4 +12,5 @@ abstract class BaseFrequencyViewModel(
     protected val _habits = MutableStateFlow<List<Habit>>(emptyList())
     val habits = _habits.asStateFlow()
     abstract fun getHabits()
+    abstract fun search(search: String)
 }
