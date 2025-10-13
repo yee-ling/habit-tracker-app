@@ -82,12 +82,12 @@ class HabitDetailsFragment : Fragment() {
     fun deleteHabit() {
         binding.mbDelete.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Delete this habit?")
-                .setMessage("This habit will be permanently removed, all progress made will also be deleted.")
-                .setNegativeButton("Cancel") { dialog, _ ->
+                .setTitle(getString(R.string.delete_habit_title))
+                .setMessage(getString(R.string.delete_habit_message))
+                .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                .setPositiveButton("Delete") { dialog, _ ->
+                .setPositiveButton(getString(R.string.delete)) { dialog, _ ->
                     viewModel.deleteHabit(args.habitId)
                     dialog.dismiss()
                     findNavController().popBackStack()
