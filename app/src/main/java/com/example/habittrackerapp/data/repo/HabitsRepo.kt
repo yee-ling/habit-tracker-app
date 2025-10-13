@@ -10,15 +10,11 @@ class HabitsRepo private constructor() {
     var counter = 0
     var progressCounter = 0
     fun add(habit: Habit) {
-        map[++counter] = habit.copy(id = counter)
+        counter++
+        map[counter] = habit.copy(id = counter)
     }
     fun getHabitById(id: Int): Habit? {
         return map[id]
-    }
-    fun getHabitByIdWithProgress(id: Int): HabitWithProgress? {
-        val habit = map[id] ?: return null
-        val progressList = progressMap[id] ?: emptyList()
-        return HabitWithProgress(habit, progressList)
     }
     fun getAllHabits() = map.values.toList()
     fun getAllHabitsWithProgress(): List<HabitWithProgress> {
@@ -34,28 +30,32 @@ class HabitsRepo private constructor() {
         progressMap.remove(id)
     }
     fun updateHabit(id: Int, habit: Habit) {
-        map[id] = habit
+        map[id] = habit.copy(id = id)
     }
-    //TODO updateHabitWithProgress?
     fun updateProgress(habitId: Int, date: Long, count: Int) {
         val progressList = progressMap[habitId] ?: mutableListOf()
         val progress = progressList.find { it.date == date }
         if (progress != null) {
             progressList[progressList.indexOf(progress)] = progress.copy(
                 progress = count,
-//                isCompleted = count >= (map[habitId]?.repeatsPerDay ?: 1)
+                isCompleted = count == (map[habitId]?.repeatsPerDay ?: 1)
             )
         } else {
             val id = ++progressCounter
             progressList.add(
-                Progress(id = id, habitId = habitId, date = date, progress = count)
-//                Progress(id = id, habitId = habitId, date = date, progress = count, isCompleted = count >= (map[habitId]?.repeatsPerDay ?: 1))
+                Progress(id = id, habitId = habitId, date = date, progress = count, isCompleted = count == (map[habitId]?.repeatsPerDay ?: 1))
             )
         }
         progressMap[habitId] = progressList
     }
     fun getHabitWithProgressByDate(habitId: Int, date: Long): Progress? {
         return progressMap[habitId]?.find { it.date == date }
+    }
+    fun getHabitByIdWithProgressByDate(habitId: Int, date: Long): HabitWithProgress? {
+        val habit = map[habitId] ?: return null
+        val progress = getHabitWithProgressByDate(habitId, date)
+        val progressList = progress?.let { listOf(it) } ?: emptyList()
+        return HabitWithProgress(habit, progressList)
     }
     fun getProgressListForHabit(habitId: Int): List<Progress> {
         return progressMap[habitId] ?: emptyList()

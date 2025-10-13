@@ -39,6 +39,7 @@
         android:label="fragment_habit_details"
         tools:layout="@layout/fragment_habit_details">
         <argument android:name="habit_id" app:argType="integer"/>
+        <argument android:name="selected_date" app:argType="long"/>
         <action
             android:id="@+id/action_habitDetails_to_editHabit"
             app:destination="@id/editHabitFragment" />

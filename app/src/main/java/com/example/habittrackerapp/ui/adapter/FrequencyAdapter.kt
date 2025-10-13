@@ -3,8 +3,12 @@ package com.example.habittrackerapp.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.habittrackerapp.R
 import com.example.habittrackerapp.data.model.Habit
 import com.example.habittrackerapp.databinding.ItemLayoutMyhabitBinding
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class FrequencyAdapter(
     private var habits: List<Habit>
@@ -34,7 +38,13 @@ class FrequencyAdapter(
         fun bind(habit: Habit) {
             binding.run {
                 tvName.text = habit.name
-//                tvSomething.text = android.icu.util.Calendar.getInstance().toString()
+                tvCategory.text = habit.category.toString()
+                tvRepeats.text = habit.repeatsPerDay.toString()
+                val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+                tvStartDate.text = formatter.format(Date(habit.startDate))
+                tvEndDate.text = habit.endDate?.let {
+                    formatter.format(Date(habit.endDate))
+                } ?: binding.root.context.getString(R.string.no_end_date)
             }
         }
     }

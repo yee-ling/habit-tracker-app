@@ -16,7 +16,9 @@ class YearlyFragment : BaseFrequencyFragment() {
         lifecycleScope.launch {
             viewModel.habits.collect {
                 adapter.setHabits(it)
+                binding.llEmpty.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
             }
         }
+        searchHabit()
     }
 }

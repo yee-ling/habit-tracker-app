@@ -2,6 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/xs"
     android:layout_margin="@dimen/xs">
 
     <LinearLayout
@@ -15,6 +17,12 @@
             android:layout_height="wrap_content"
             android:text="@string/name"/>
         <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/category"/>
+        <TextView
+            android:id="@+id/tvRepeats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/repeats"/>
@@ -22,11 +30,27 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/xxxxs"
             android:layout_marginVertical="@dimen/xxxs"/>
-        <TextView
-            android:id="@+id/tvSomething"
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/start_date"/>
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/start_date"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/xs"
+                android:text="@string/dash"/>
+            <TextView
+                android:id="@+id/tvEndDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/end_date"/>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
