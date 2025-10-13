@@ -19,7 +19,7 @@
         android:layout_marginTop="@dimen/m"
         android:text="@string/name"
         android:textSize="@dimen/tx_xxxl"
-        app:layout_constraintBottom_toTopOf="@+id/tvRepeatsTitle"
+        app:layout_constraintBottom_toTopOf="@+id/tvCategoryTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

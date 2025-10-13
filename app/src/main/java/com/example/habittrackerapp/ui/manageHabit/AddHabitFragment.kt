@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.habittrackerapp.data.model.Category
 import com.example.habittrackerapp.data.model.Frequency
+import com.example.habittrackerapp.R
 import kotlinx.coroutines.launch
 import java.text.DateFormat
 import java.util.Calendar
@@ -25,11 +26,16 @@ class AddHabitFragment : BaseManageFragment() {
             }
         }
         habitRepeatCounter()
-        observeStartDateResult()
-        observeEndDateResult()
+        showErrorMessage()
         submit()
-
 //        UPDATE THE START DATE BUTTON TO THE SELECTED DATE
+        setupStartDateSelection()
+        observeStartDateResult()
+//        UPDATE THE END DATE BUTTON TO THE SELECTED DATE
+        setupEndDateSelection()
+        observeEndDateResult()
+    }
+    fun setupStartDateSelection() {
         val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM)
             .format(Date(startDate))
         binding.mbStartDatePicker.text = dateFormat.toString()
@@ -37,8 +43,8 @@ class AddHabitFragment : BaseManageFragment() {
             val action = AddHabitFragmentDirections.actionAddHabitToStartDateDialog(startDate)
             findNavController().navigate(action)
         }
-
-//        UPDATE THE END DATE BUTTON TO THE SELECTED DATE
+    }
+    fun setupEndDateSelection() {
         binding.materialSwitch.setOnCheckedChangeListener { materialSwitch, isCheck ->
             if(materialSwitch.isChecked) {
                 if (endDate == null) endDate = Calendar.getInstance().timeInMillis
@@ -57,7 +63,8 @@ class AddHabitFragment : BaseManageFragment() {
         }
     }
     fun observeStartDateResult() {
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Long>("startDate")?.observe(
+        findNavController().currentBackStackEntry?.savedStateHandle?.
+        getLiveData<Long>(getString(R.string.startDate))?.observe(
             viewLifecycleOwner
         ) { result ->
             startDate = result
@@ -67,7 +74,8 @@ class AddHabitFragment : BaseManageFragment() {
         }
     }
     fun observeEndDateResult() {
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Long>("endDate")?.observe(
+        findNavController().currentBackStackEntry?.savedStateHandle?.
+        getLiveData<Long>(getString(R.string.endDate))?.observe(
             viewLifecycleOwner
         ) { result ->
             endDate = result
@@ -76,7 +84,6 @@ class AddHabitFragment : BaseManageFragment() {
             binding.mbEndDatePicker.text = dateFormat.toString()
         }
     }
-
     override fun submit() {
         binding.run {
             mbSubmit.setOnClickListener {
@@ -96,14 +103,7 @@ class AddHabitFragment : BaseManageFragment() {
                     else -> Category.PERSONAL
                 }
                 val count = tvCount.text.toString().toInt()
-                viewModel.addHabit(
-                    name = name,
-                    frequency = frequency,
-                    category = category,
-                    count = count,
-                    startDate = startDate,
-                    endDate = endDate
-                )
+                viewModel.addHabit(name, frequency, category, count, startDate, endDate)
             }
         }
     }

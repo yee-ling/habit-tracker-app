@@ -39,28 +39,34 @@ class CalendarAdapter(
         private val binding: ItemLayoutCalendarBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(date: Long) {
+            val dayOfWeek = SimpleDateFormat("EEE", Locale.getDefault()).format(Date(date))
             val day = SimpleDateFormat("dd", Locale.getDefault()).format(Date(date))
             val month = SimpleDateFormat("MMM", Locale.getDefault()).format(Date(date))
-            val year = SimpleDateFormat("yyyy", Locale.getDefault()).format(Date(date))
+            binding.tvDayOfWeek.text = dayOfWeek
             binding.tvDay.text = day
             binding.tvMonth.text = month
-            binding.tvYear.text = year
-            val today = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, 0)
+            val today = Calendar.getInstance().apply { set(Calendar.HOUR_OF_DAY, 0)
                 set(Calendar.MINUTE, 0)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
             }.timeInMillis
-
+            setCalendarCardColor(today = today, date = date)
+            binding.llCalendar.setOnClickListener {
+                selectedDate = date
+                onClick(date)
+                notifyDataSetChanged()
+            }
+        }
+        fun setCalendarCardColor(today: Long, date: Long) {
             when (date) {
                 today -> {
                     binding.cvCalendar.setCardBackgroundColor(
-                        ContextCompat.getColor(binding.root.context, R.color.green)
+                        ContextCompat.getColor(binding.root.context, R.color.orange_500)
                     )
                 }
                 selectedDate -> {
                     binding.cvCalendar.setCardBackgroundColor(
-                        ContextCompat.getColor(binding.root.context, R.color.grey)
+                        ContextCompat.getColor(binding.root.context, R.color.orange_200)
                     )
                 }
                 else -> {
@@ -68,11 +74,6 @@ class CalendarAdapter(
                         ContextCompat.getColor(binding.root.context, R.color.white)
                     )
                 }
-            }
-            binding.llCalendar.setOnClickListener {
-                selectedDate = date
-                onClick(date)
-                notifyDataSetChanged()
             }
         }
     }

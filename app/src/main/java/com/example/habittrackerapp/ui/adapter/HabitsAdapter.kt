@@ -1,14 +1,12 @@
 package com.example.habittrackerapp.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habittrackerapp.data.model.Habit
 import com.example.habittrackerapp.data.model.HabitWithProgress
 import com.example.habittrackerapp.databinding.ItemLayoutHabitBinding
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class HabitsAdapter(
     private var habits: List<HabitWithProgress>,
@@ -44,16 +42,14 @@ class HabitsAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(habitWithProgress: HabitWithProgress) {
             val habit = habitWithProgress.habit
-            val progressList = habitWithProgress.progress
-            val progressForSelectedDate = progressList.find { it.date == selectedDate }
+            val progressForSelectedDate = habitWithProgress.progress.find { it.date == selectedDate }
             binding.run {
                 tvName.text = habit.name
                 tvFrequency.text = habit.frequency.toString()
                 tvProgress.text = (progressForSelectedDate?.progress?:0).toString()
                 tvRepeats.text = habit.repeatsPerDay.toString()
-                val formatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-                val formattedDate = formatter.format(Date(habit.startDate))
-                tvStartDate.text = formattedDate
+                tvCompleted.visibility = if(progressForSelectedDate?.isCompleted == true) View.VISIBLE
+                else View.GONE
                 llHabit.setOnClickListener {
                     onClick(habit)
                 }

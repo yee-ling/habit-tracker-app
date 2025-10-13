@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.habittrackerapp.R
 import com.example.habittrackerapp.data.model.Category
 import com.example.habittrackerapp.databinding.FragmentHomeBinding
 import com.example.habittrackerapp.ui.adapter.CalendarAdapter
@@ -50,25 +51,7 @@ class HomeFragment : Fragment() {
                 binding.llEmpty.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
             }
         }
-        binding.cgCategory.setOnCheckedStateChangeListener { group, checkedIds ->
-            val checkedId = checkedIds.firstOrNull()
-            val categorySelected = when(checkedId) {
-                binding.chipAll.id -> "All"
-                binding.chipHealth.id -> Category.HEALTH
-                binding.chipStudy.id -> Category.STUDY
-                binding.chipWork.id -> Category.WORK
-                binding.chipPersonal.id -> Category.PERSONAL
-                else -> "All"
-            }
-            val filteredByCategory = if(categorySelected == "All") {
-                viewModel.habits.value
-            } else {
-                viewModel.habits.value.filter {
-                    it.habit.category == categorySelected
-                }
-            }
-            adapter.setHabits(filteredByCategory)
-        }
+        setupCategoryFilter()
     }
     fun navigateToAddHabit() {
         binding.fabAdd.setOnClickListener {
@@ -95,6 +78,17 @@ class HomeFragment : Fragment() {
         binding.rvHabits.adapter = adapter
     }
     fun setupCalendarAdapter() {
+        generateCalendarView()
+        binding.rvCalendarView.layoutManager = LinearLayoutManager(requireContext(),
+            LinearLayoutManager.HORIZONTAL, false)
+        binding.rvCalendarView.adapter = calendarAdapter
+        val todayIndex = 1000
+        binding.rvCalendarView.scrollToPosition(todayIndex)
+        binding.chipToday.setOnClickListener {
+            binding.rvCalendarView.smoothScrollToPosition(todayIndex)
+        }
+    }
+    fun generateCalendarView() {
         val today = Calendar.getInstance().apply {
             set(Calendar.HOUR_OF_DAY, 0)
             set(Calendar.MINUTE, 0)
@@ -114,13 +108,26 @@ class HomeFragment : Fragment() {
             adapter.setSelectedDate(selectedDate)
             binding.cgCategory.check(binding.chipAll.id)
         }
-        binding.rvCalendarView.layoutManager = LinearLayoutManager(requireContext(),
-            LinearLayoutManager.HORIZONTAL, false)
-        binding.rvCalendarView.adapter = calendarAdapter
-        val todayIndex = 1000
-        binding.rvCalendarView.scrollToPosition(todayIndex)
-        binding.tvHomeDate.setOnClickListener {
-            binding.rvCalendarView.smoothScrollToPosition(todayIndex)
+    }
+    fun setupCategoryFilter() {
+        binding.cgCategory.setOnCheckedStateChangeListener { group, checkedIds ->
+            val checkedId = checkedIds.firstOrNull()
+            val categorySelected = when(checkedId) {
+                binding.chipAll.id -> getString(R.string.all)
+                binding.chipHealth.id -> Category.HEALTH
+                binding.chipStudy.id -> Category.STUDY
+                binding.chipWork.id -> Category.WORK
+                binding.chipPersonal.id -> Category.PERSONAL
+                else -> getString(R.string.all)
+            }
+            val filteredByCategory = if(categorySelected == getString(R.string.all)) {
+                viewModel.habits.value
+            } else {
+                viewModel.habits.value.filter {
+                    it.habit.category == categorySelected
+                }
+            }
+            adapter.setHabits(filteredByCategory)
         }
     }
 }

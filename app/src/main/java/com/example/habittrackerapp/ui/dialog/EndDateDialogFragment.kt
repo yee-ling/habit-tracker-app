@@ -17,6 +17,18 @@ class EndDateDialogFragment : BaseDialogFragment() {
         binding.mbCancel.setOnClickListener {
             dismiss()
         }
+        setupEndDatePicker()
+        val cal = Calendar.getInstance().apply {
+            timeInMillis = args.endDate
+        }
+        binding.datePicker.updateDate(
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        )
+        binding.datePicker.minDate = Calendar.getInstance().timeInMillis
+    }
+    fun setupEndDatePicker() {
         binding.run {
             tvPlaceholder.text = getString(R.string.end_date)
             mbApply.setOnClickListener {
@@ -26,19 +38,10 @@ class EndDateDialogFragment : BaseDialogFragment() {
                     set(Calendar.DAY_OF_MONTH, datePicker.dayOfMonth)
                 }
                 val endDate = selectedDate.timeInMillis
-                findNavController().previousBackStackEntry?.savedStateHandle?.set("endDate", endDate)
+                findNavController().previousBackStackEntry?.savedStateHandle?.
+                set(getString(R.string.endDate), endDate)
                 dismiss()
             }
         }
-        val cal = Calendar.getInstance().apply {
-            timeInMillis = args.endDate
-        }
-        binding.datePicker.updateDate(
-            cal.get(Calendar.YEAR),
-            cal.get(Calendar.MONTH),
-            cal.get(Calendar.DAY_OF_MONTH)
-        )
-        // TODO set the minDate for the endDate
-        binding.datePicker.minDate = Calendar.getInstance().timeInMillis
     }
 }
