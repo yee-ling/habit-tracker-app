@@ -16,9 +16,9 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/m"
+        android:layout_marginTop="@dimen/xxxs"
         android:text="@string/name"
-        android:textSize="@dimen/tx_xxxl"
+        android:textSize="@dimen/tx_xxl"
         app:layout_constraintBottom_toTopOf="@+id/tvCategoryTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
         android:text="@string/frequency"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFrequencyTitle" />
@@ -58,6 +59,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
         android:text="@string/category"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tvCategoryTitle" />
@@ -77,6 +79,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
         android:text="@string/start_date"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStartDateTitle" />
@@ -96,6 +99,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
         android:text="@string/end_date"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tvEndDateTitle" />
@@ -105,8 +109,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/streaks"
-        android:textSize="@dimen/tx_xxxl"
-        android:layout_marginTop="@dimen/xl"
+        android:textSize="@dimen/tx_xxl"
+        android:layout_marginTop="@dimen/xxl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStartDate" />
@@ -117,7 +121,7 @@
         android:layout_height="wrap_content"
         android:text="@string/current_streak"
         android:layout_marginTop="@dimen/m"
-        android:padding="@dimen/xxxxs"
+        android:padding="@dimen/xs"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStreaks" />
@@ -127,7 +131,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/current_streak"
-        android:padding="@dimen/xxxxs"
+        android:padding="@dimen/xs"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCurrentStreakTitle" />
@@ -138,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/m"
         android:text="@string/your_best"
-        android:padding="@dimen/xxxxs"
+        android:padding="@dimen/xs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tvStreaks" />
@@ -147,8 +152,9 @@
         android:id="@+id/tvYourBest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/xxxxs"
+        android:padding="@dimen/xs"
         android:text="@string/your_best"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tvYourBestTitle" />
@@ -157,9 +163,9 @@
         android:id="@+id/tvCompletion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/xl"
+        android:layout_marginTop="@dimen/xxl"
         android:text="@string/completion_rate"
-        android:textSize="@dimen/tx_xxxl"
+        android:textSize="@dimen/tx_xxl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCurrentStreak" />
@@ -170,54 +176,60 @@
         android:layout_marginTop="@dimen/m"
         android:max="4"
         android:progress="2"
-        app:indicatorColor="@color/green"
+        app:indicatorColor="@color/orange_500"
         app:indicatorDirectionCircular="clockwise"
         app:indicatorSize="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCompletion"
-        app:trackColor="@color/grey"
+        app:trackColor="@color/light_grey"
         app:trackThickness="@dimen/s" />
+
     <LinearLayout
         android:id="@+id/llCompletion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/m"
-        android:padding="@dimen/xs"
         android:orientation="horizontal"
+        android:padding="@dimen/xs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpCurrentProgress">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/tx_m"
             android:layout_marginEnd="@dimen/xs"
-            android:text="@string/today_s_progress"/>
+            android:text="@string/today_s_progress"
+            android:textSize="@dimen/tx_m" />
+
         <TextView
             android:id="@+id/tvCurrentProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/tx_m"
-            android:text="@string/current_progress"/>
+            android:text="@string/current_progress"
+            android:textSize="@dimen/tx_m" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/xs"
-            android:textSize="@dimen/tx_m"
-            android:text="@string/slash"/>
+            android:text="@string/slash"
+            android:textSize="@dimen/tx_m" />
+
         <TextView
             android:id="@+id/tvRepeats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/tx_m"
-            android:text="@string/repeats"/>
+            android:text="@string/repeats"
+            android:textSize="@dimen/tx_m" />
     </LinearLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit"
+        app:cornerRadius="@dimen/s"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -227,6 +239,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/delete"
+        app:cornerRadius="@dimen/s"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"

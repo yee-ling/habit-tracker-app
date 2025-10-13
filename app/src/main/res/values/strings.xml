@@ -52,4 +52,7 @@
     <string name="today_s_progress">Today\'s progress:</string>
     <string name="startDate">startDate</string>
     <string name="endDate">endDate</string>
+    <string name="eee">EEE</string>
+    <string name="dd">dd</string>
+    <string name="mmm">MMM</string>
 </resources>

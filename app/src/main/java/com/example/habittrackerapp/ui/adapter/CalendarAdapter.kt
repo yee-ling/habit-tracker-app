@@ -39,9 +39,10 @@ class CalendarAdapter(
         private val binding: ItemLayoutCalendarBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(date: Long) {
-            val dayOfWeek = SimpleDateFormat("EEE", Locale.getDefault()).format(Date(date))
-            val day = SimpleDateFormat("dd", Locale.getDefault()).format(Date(date))
-            val month = SimpleDateFormat("MMM", Locale.getDefault()).format(Date(date))
+            val context = binding.root.context
+            val dayOfWeek = SimpleDateFormat(context.getString(R.string.eee), Locale.getDefault()).format(Date(date))
+            val day = SimpleDateFormat(context.getString(R.string.dd), Locale.getDefault()).format(Date(date))
+            val month = SimpleDateFormat(context.getString(R.string.mmm), Locale.getDefault()).format(Date(date))
             binding.tvDayOfWeek.text = dayOfWeek
             binding.tvDay.text = day
             binding.tvMonth.text = month
