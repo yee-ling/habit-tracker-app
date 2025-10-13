@@ -7,7 +7,9 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
 class WeeklyFragment : BaseFrequencyFragment() {
-    override val viewModel: WeeklyViewModel by viewModels()
+    override val viewModel: WeeklyViewModel by viewModels {
+        WeeklyViewModel.Factory
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

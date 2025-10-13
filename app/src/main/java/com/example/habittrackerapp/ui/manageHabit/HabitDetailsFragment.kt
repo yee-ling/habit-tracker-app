@@ -18,7 +18,9 @@ import java.util.Date
 
 class HabitDetailsFragment : Fragment() {
     private lateinit var binding: FragmentHabitDetailsBinding
-    private val viewModel: HabitDetailsViewModel by viewModels()
+    private val viewModel: HabitDetailsViewModel by viewModels {
+        HabitDetailsViewModel.Factory
+    }
     private val args: HabitDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -62,10 +64,14 @@ class HabitDetailsFragment : Fragment() {
         }
     }
     fun updateCurrentStreak() {
-        binding.tvCurrentStreak.text = viewModel.getCurrentStreak(args.habitId).toString()
+        lifecycleScope.launch {
+            binding.tvCurrentStreak.text = viewModel.getCurrentStreak(args.habitId).toString()
+        }
     }
     fun updateYourBestStreak() {
-        binding.tvYourBest.text = viewModel.getLongestStreak(args.habitId).toString()
+        lifecycleScope.launch {
+            binding.tvYourBest.text = viewModel.getLongestStreak(args.habitId).toString()
+        }
     }
     fun navigateToEditHabit() {
         binding.mbEdit.setOnClickListener {
