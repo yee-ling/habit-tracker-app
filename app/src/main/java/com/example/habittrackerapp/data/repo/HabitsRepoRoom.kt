@@ -42,9 +42,6 @@ class HabitsRepoRoom(
         )
         progressDao.insertOrUpdate(progress)
     }
-    suspend fun getHabitWithProgressByDate(habitId: Int, date: Long): Progress? {
-        return progressDao.getProgressForDate(habitId, date)
-    }
     suspend fun getHabitByIdWithProgressByDate(habitId: Int, date: Long): HabitWithProgress? {
         val habit = dao.getHabitById(habitId) ?: return null
         val progress = progressDao.getProgressForDate(habitId, date)
