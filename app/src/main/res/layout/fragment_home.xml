@@ -96,6 +96,7 @@
                 android:layout_width="@dimen/xxxxxxxxl"
                 android:layout_height="@dimen/xxxxxxxxl"
                 android:layout_marginBottom="@dimen/xs"
+                android:contentDescription="@string/empty_state_icon"
                 android:src="@drawable/ic_sentiment_dissatisfied"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -109,6 +110,7 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
             android:src="@drawable/ic_add"
+            android:contentDescription="@string/add_habit_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

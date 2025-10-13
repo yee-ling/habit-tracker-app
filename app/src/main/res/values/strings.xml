@@ -55,4 +55,6 @@
     <string name="eee">EEE</string>
     <string name="dd">dd</string>
     <string name="mmm">MMM</string>
+    <string name="add_habit_icon">Add habit icon</string>
+    <string name="empty_state_icon">Empty state icon</string>
 </resources>

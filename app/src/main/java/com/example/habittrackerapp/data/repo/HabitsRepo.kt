@@ -16,11 +16,6 @@ class HabitsRepo private constructor() {
     fun getHabitById(id: Int): Habit? {
         return map[id]
     }
-    fun getHabitByIdWithProgress(id: Int): HabitWithProgress? {
-        val habit = map[id] ?: return null
-        val progressList = progressMap[id] ?: emptyList()
-        return HabitWithProgress(habit, progressList)
-    }
     fun getAllHabits() = map.values.toList()
     fun getAllHabitsWithProgress(): List<HabitWithProgress> {
         return map.values.map { habit ->
