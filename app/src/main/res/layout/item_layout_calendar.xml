@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/xxxxxxxxxl"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="@dimen/xs"
-    app:cardCornerRadius="@dimen/l"
+    android:layout_margin="@dimen/xxs"
+    app:cardCornerRadius="@dimen/m"
     android:id="@+id/cvCalendar">
     <LinearLayout
         android:id="@+id/llCalendar"
@@ -12,7 +12,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="@dimen/s">
+        android:padding="@dimen/xs">
+        <TextView
+            android:id="@+id/tvDayOfWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:text="@string/day"/>
         <TextView
             android:id="@+id/tvDay"
             android:layout_width="wrap_content"
@@ -23,10 +29,5 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/month"/>
-        <TextView
-            android:id="@+id/tvYear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/year"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

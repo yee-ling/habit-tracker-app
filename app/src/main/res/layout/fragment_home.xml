@@ -6,20 +6,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
-    <TextView
-        android:id="@+id/tvHomeDate"
-        android:layout_width="match_parent"
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipToday"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/xs"
-        android:textSize="@dimen/tx_l"
-        android:text="@string/today"/>
+        android:layout_marginHorizontal="@dimen/xs"
+        android:text="@string/today"
+        android:checkable="false"
+        android:clickable="true"
+        android:focusable="true"
+        app:chipIcon="@drawable/ic_today"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCalendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="@dimen/xxxxs"
+        android:layout_height="@dimen/xxxxxs"
         android:layout_marginVertical="@dimen/xxxs"/>
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgCategory"

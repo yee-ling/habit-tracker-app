@@ -16,6 +16,7 @@
     <dimen name="xxxxxxl">36dp</dimen>
     <dimen name="xxxxxxxl">38dp</dimen>
     <dimen name="xxxxxxxxl">40dp</dimen>
+    <dimen name="xxxxxxxxxl">56dp</dimen>
 
     <dimen name="tx_xxs">8sp</dimen>
     <dimen name="tx_xs">10sp</dimen>

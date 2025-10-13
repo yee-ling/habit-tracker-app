@@ -41,4 +41,15 @@
     <string name="home_empty_text_placeholder_2">Click the + button to add new habit</string>
     <string name="frequency_empty_text_placeholder_2">You can add one from the Home page</string>
     <string name="search">Search</string>
+    <string name="dash">-</string>
+    <string name="no_end_date">No end date</string>
+    <string name="completed">Completed</string>
+    <string name="add_habit">Add Habit</string>
+    <string name="edit_habit">Edit Habit</string>
+    <string name="name_of_your_habit">Name of your habit:</string>
+    <string name="frequency_of_your_habit">Frequency of your habit:</string>
+    <string name="choose_a_category">Choose a Category:</string>
+    <string name="today_s_progress">Today\'s progress:</string>
+    <string name="startDate">startDate</string>
+    <string name="endDate">endDate</string>
 </resources>

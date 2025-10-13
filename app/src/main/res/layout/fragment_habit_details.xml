@@ -16,7 +16,7 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/xxxxxxxxl"
+        android:layout_marginTop="@dimen/m"
         android:text="@string/name"
         android:textSize="@dimen/tx_xxxl"
         app:layout_constraintBottom_toTopOf="@+id/tvRepeatsTitle"
@@ -43,24 +43,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFrequencyTitle" />
     <TextView
-        android:id="@+id/tvRepeatsTitle"
+        android:id="@+id/tvCategoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/m"
         android:padding="@dimen/xs"
-        android:text="@string/repeats"
+        android:text="@string/category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
     <TextView
-        android:id="@+id/tvRepeats"
+        android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/xs"
-        android:text="@string/repeats"
+        android:text="@string/category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvRepeatsTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCategoryTitle" />
     <TextView
         android:id="@+id/tvStartDateTitle"
         android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
         android:text="@string/end_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvRepeats" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
     <TextView
         android:id="@+id/tvEndDate"
         android:layout_width="wrap_content"
@@ -99,16 +99,70 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/tvEndDateTitle" />
+
+    <TextView
+        android:id="@+id/tvStreaks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/streaks"
+        android:textSize="@dimen/tx_xxxl"
+        android:layout_marginTop="@dimen/xl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStartDate" />
+
+    <TextView
+        android:id="@+id/tvCurrentStreakTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_streak"
+        android:layout_marginTop="@dimen/m"
+        android:padding="@dimen/xxxxs"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStreaks" />
+
+    <TextView
+        android:id="@+id/tvCurrentStreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_streak"
+        android:padding="@dimen/xxxxs"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentStreakTitle" />
+
+    <TextView
+        android:id="@+id/tvYourBestTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/m"
+        android:text="@string/your_best"
+        android:padding="@dimen/xxxxs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tvStreaks" />
+
+    <TextView
+        android:id="@+id/tvYourBest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/xxxxs"
+        android:text="@string/your_best"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourBestTitle" />
+
     <TextView
         android:id="@+id/tvCompletion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/m"
+        android:layout_marginTop="@dimen/xl"
         android:text="@string/completion_rate"
         android:textSize="@dimen/tx_xxxl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEndDate" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentStreak" />
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/cpCurrentProgress"
         android:layout_width="wrap_content"
@@ -124,26 +178,41 @@
         app:layout_constraintTop_toBottomOf="@+id/tvCompletion"
         app:trackColor="@color/grey"
         app:trackThickness="@dimen/s" />
-    <TextView
-        android:id="@+id/tvCurrentProgress"
+    <LinearLayout
+        android:id="@+id/llCompletion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/m"
         android:padding="@dimen/xs"
-        android:text="@string/current_progress"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpCurrentProgress" />
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/category"
-        android:padding="@dimen/xs"
-        app:layout_constraintBottom_toTopOf="@+id/mbEdit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentProgress" />
+        app:layout_constraintTop_toBottomOf="@+id/cpCurrentProgress">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tx_m"
+            android:layout_marginEnd="@dimen/xs"
+            android:text="@string/today_s_progress"/>
+        <TextView
+            android:id="@+id/tvCurrentProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tx_m"
+            android:text="@string/current_progress"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/xs"
+            android:textSize="@dimen/tx_m"
+            android:text="@string/slash"/>
+        <TextView
+            android:id="@+id/tvRepeats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tx_m"
+            android:text="@string/repeats"/>
+    </LinearLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbEdit"
         android:layout_width="wrap_content"
@@ -152,7 +221,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentProgress" />
+        app:layout_constraintTop_toBottomOf="@+id/llCompletion" />
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mbDelete"
         android:layout_width="wrap_content"
@@ -161,5 +230,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentProgress" />
+        app:layout_constraintTop_toBottomOf="@+id/llCompletion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
