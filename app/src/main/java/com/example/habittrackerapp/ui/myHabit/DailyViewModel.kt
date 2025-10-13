@@ -1,21 +1,22 @@
 package com.example.habittrackerapp.ui.myHabit
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.habittrackerapp.data.model.Frequency
-import com.example.habittrackerapp.data.model.Habit
-import com.example.habittrackerapp.data.repo.HabitsRepo
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
-class DailyViewModel(
-    private val repo: HabitsRepo = HabitsRepo.getInstance()
-) : ViewModel() {
-    private val _habits = MutableStateFlow<List<Habit>>(emptyList())
-    val habits = _habits.asStateFlow()
+class DailyViewModel: BaseFrequencyViewModel() {
     init {
         getHabits()
     }
-    fun getHabits() {
+    override fun getHabits() {
         _habits.value = repo.getAllHabits().filter { it.frequency == Frequency.DAILY }
+    }
+
+    override fun search(search: String) {
+        viewModelScope.launch {
+            _habits.value = repo.getAllHabits()
+                .filter { it.frequency == Frequency.DAILY }
+                .filter { it.name.contains(search) }
+        }
     }
 }

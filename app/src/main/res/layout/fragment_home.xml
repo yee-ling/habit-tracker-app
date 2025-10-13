@@ -3,42 +3,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rvCalendar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"/>-->
-
-<!--    <CalendarView-->
-<!--        android:id="@+id/calendarView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"/>-->
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/xxxxs"
-        android:layout_marginVertical="@dimen/xxxs"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHabits"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/mbMyHabit"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"/>-->
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:src="@drawable/ic_add"
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipToday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/xl"
-        android:layout_marginEnd="@dimen/xl"/>
-
+        android:layout_marginHorizontal="@dimen/xs"
+        android:text="@string/today"
+        android:checkable="false"
+        android:clickable="true"
+        android:focusable="true"
+        app:chipIcon="@drawable/ic_today"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCalendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/xxxxxs"
+        android:layout_marginVertical="@dimen/xxxs"/>
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/xs"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        app:checkedChip="@+id/chipAll">
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/all"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipHealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/health"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipStudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/study"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/work"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            app:checkedIconEnabled="true"
+            app:checkedIconVisible="true"
+            app:checkedIcon="@drawable/ic_check_small"
+            android:text="@string/personal"/>
+    </com.google.android.material.chip.ChipGroup>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHabits"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:id="@+id/llEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="@dimen/xxxxxxxxl"
+                android:layout_height="@dimen/xxxxxxxxl"
+                android:layout_marginBottom="@dimen/xs"
+                android:contentDescription="@string/empty_state_icon"
+                android:src="@drawable/ic_sentiment_dissatisfied"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_empty_text_placeholder"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_empty_text_placeholder_2"/>
+        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/add_habit_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/xl"
+            android:layout_marginEnd="@dimen/xl" />
+    </FrameLayout>
 </LinearLayout>

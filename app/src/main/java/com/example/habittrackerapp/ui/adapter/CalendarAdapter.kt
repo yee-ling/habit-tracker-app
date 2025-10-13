@@ -2,13 +2,21 @@ package com.example.habittrackerapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.habittrackerapp.data.model.Calendar
+import com.example.habittrackerapp.R
 import com.example.habittrackerapp.databinding.ItemLayoutCalendarBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class CalendarAdapter(
-    private var views: List<Calendar>
+    private var dates: List<Long>,
+    private val onClick: (Long) -> Unit
 ): RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
+    private var selectedDate: Long? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,18 +29,52 @@ class CalendarAdapter(
         holder: CalendarViewHolder,
         position: Int
     ) {
-        val view = views[position]
-        holder.bind(view)
+        val date = dates[position]
+        holder.bind(date)
     }
 
-    override fun getItemCount() = views.size
+    override fun getItemCount() = dates.size
 
     inner class CalendarViewHolder(
         private val binding: ItemLayoutCalendarBinding
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(calendarView: Calendar) {
-            binding.run {
-                tvDay.text = calendarView.date.toString()
+        fun bind(date: Long) {
+            val context = binding.root.context
+            val dayOfWeek = SimpleDateFormat(context.getString(R.string.eee), Locale.getDefault()).format(Date(date))
+            val day = SimpleDateFormat(context.getString(R.string.dd), Locale.getDefault()).format(Date(date))
+            val month = SimpleDateFormat(context.getString(R.string.mmm), Locale.getDefault()).format(Date(date))
+            binding.tvDayOfWeek.text = dayOfWeek
+            binding.tvDay.text = day
+            binding.tvMonth.text = month
+            val today = Calendar.getInstance().apply { set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }.timeInMillis
+            setCalendarCardColor(today = today, date = date)
+            binding.llCalendar.setOnClickListener {
+                selectedDate = date
+                onClick(date)
+                notifyDataSetChanged()
+            }
+        }
+        fun setCalendarCardColor(today: Long, date: Long) {
+            when (date) {
+                today -> {
+                    binding.cvCalendar.setCardBackgroundColor(
+                        ContextCompat.getColor(binding.root.context, R.color.orange_500)
+                    )
+                }
+                selectedDate -> {
+                    binding.cvCalendar.setCardBackgroundColor(
+                        ContextCompat.getColor(binding.root.context, R.color.orange_200)
+                    )
+                }
+                else -> {
+                    binding.cvCalendar.setCardBackgroundColor(
+                        ContextCompat.getColor(binding.root.context, R.color.white)
+                    )
+                }
             }
         }
     }
