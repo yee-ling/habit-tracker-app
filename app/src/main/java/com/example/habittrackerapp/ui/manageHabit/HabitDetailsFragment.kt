@@ -18,7 +18,9 @@ import java.util.Date
 
 class HabitDetailsFragment : Fragment() {
     private lateinit var binding: FragmentHabitDetailsBinding
-    private val viewModel: HabitDetailsViewModel by viewModels()
+    private val viewModel: HabitDetailsViewModel by viewModels {
+        HabitDetailsViewModel.Factory
+    }
     private val args: HabitDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -62,10 +64,14 @@ class HabitDetailsFragment : Fragment() {
         }
     }
     fun updateCurrentStreak() {
-        binding.tvCurrentStreak.text = viewModel.getCurrentStreak(args.habitId).toString()
+        lifecycleScope.launch {
+            binding.tvCurrentStreak.text = viewModel.getCurrentStreak(args.habitId).toString()
+        }
     }
     fun updateYourBestStreak() {
-        binding.tvYourBest.text = viewModel.getLongestStreak(args.habitId).toString()
+        lifecycleScope.launch {
+            binding.tvYourBest.text = viewModel.getLongestStreak(args.habitId).toString()
+        }
     }
     fun navigateToEditHabit() {
         binding.mbEdit.setOnClickListener {
@@ -76,12 +82,12 @@ class HabitDetailsFragment : Fragment() {
     fun deleteHabit() {
         binding.mbDelete.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Delete this habit?")
-                .setMessage("This habit will be permanently removed, all progress made will also be deleted.")
-                .setNegativeButton("Cancel") { dialog, _ ->
+                .setTitle(getString(R.string.delete_habit_title))
+                .setMessage(getString(R.string.delete_habit_message))
+                .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                .setPositiveButton("Delete") { dialog, _ ->
+                .setPositiveButton(getString(R.string.delete)) { dialog, _ ->
                     viewModel.deleteHabit(args.habitId)
                     dialog.dismiss()
                     findNavController().popBackStack()

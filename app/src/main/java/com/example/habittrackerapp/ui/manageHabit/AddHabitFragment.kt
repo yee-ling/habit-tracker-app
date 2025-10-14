@@ -14,7 +14,9 @@ import java.util.Calendar
 import java.util.Date
 
 class AddHabitFragment : BaseManageFragment() {
-    override val viewModel: AddHabitViewModel by viewModels()
+    override val viewModel: AddHabitViewModel by viewModels {
+        AddHabitViewModel.Factory
+    }
     private var startDate: Long = Calendar.getInstance().timeInMillis
     private var endDate: Long? = null
 

@@ -2,12 +2,12 @@ package com.example.habittrackerapp.ui.myHabit
 
 import androidx.lifecycle.ViewModel
 import com.example.habittrackerapp.data.model.Habit
-import com.example.habittrackerapp.data.repo.HabitsRepo
+import com.example.habittrackerapp.data.repo.HabitsRepoRoom
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 abstract class BaseFrequencyViewModel(
-    protected val repo: HabitsRepo = HabitsRepo.getInstance()
+    protected val repo: HabitsRepoRoom
 ) : ViewModel() {
     protected val _habits = MutableStateFlow<List<Habit>>(emptyList())
     val habits = _habits.asStateFlow()

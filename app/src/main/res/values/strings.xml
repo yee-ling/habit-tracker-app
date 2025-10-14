@@ -57,4 +57,7 @@
     <string name="mmm">MMM</string>
     <string name="add_habit_icon">Add habit icon</string>
     <string name="empty_state_icon">Empty state icon</string>
+    <string name="delete_habit_title">Delete this habit?</string>
+    <string name="delete_habit_message">This habit will be permanently removed, all progress made will also be deleted.</string>
+    <string name="cancel">Cancel</string>
 </resources>
